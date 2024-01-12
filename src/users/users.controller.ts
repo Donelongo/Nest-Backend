@@ -2,9 +2,9 @@ import { Controller, Delete, Get, Param, Post, Put, Query, Body, NotFoundExcepti
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersService } from './users.service';
-import { AuthGuard } from '../auth/auth.guard';
+// import { AuthGuard } from '../auth/auth.guard';
 
-@UseGuards(AuthGuard)
+// @UseGuards(AuthGuard)
 @Controller('users')
 export class UsersController {
 
@@ -38,16 +38,10 @@ export class UsersController {
     createUser(@Body() newUser: CreateUserDto){
 
     }
-
     @Post('login')
     checkuser(@Body() userData: CreateUserDto){
-        let login = this.UsersService.confirm_user(userData.user_name, userData.password)
-
-        if(!login) {
-            throw new Error('User not found');
-        }
-
-        return login;
+        let loginStat = this.UsersService.confirm_user(userData.user_name, userData.password)
+        return {loginStat}
     }
 
 

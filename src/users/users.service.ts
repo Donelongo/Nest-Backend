@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { InsertValuesMissingError } from 'typeorm';
 
 @Injectable()
 export class UsersService {
 
     private Users: Array<CreateUserDto> = [
-        {user_name: "Don1ongo", password: "123321", access_level: "Admin"},
+        {user_name: "d1longo", password: "123321", access_level: "Admin"},
         {user_name: "Samra", password: "987789", access_level: "Admin"}
     ]
 
@@ -56,12 +57,16 @@ export class UsersService {
     }
 
     confirm_user(user_name: string, password: string){
-        let user = this.Users.find(user => user.user_name === user_name)
+        try {
+            let user = this.Users.find(usr => usr.user_name === user_name)
 
-        if(user.password === password){
-            return true
-        }else{
-            return false
+            if(user && user.password === password){
+                return true
+            }else{
+                return false
+            }
+        } catch (error) {
+            console.log(error) 
         }
     }
 }

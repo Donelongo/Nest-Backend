@@ -39,9 +39,9 @@ deleteNote(@Param('id', ParseIntPipe) ID: number){
 
 // post /notes
 @Post()
-createNote(@Body() postBody: CreateNoteDto){
-    this.NotesService.addNote(postBody)
-
+createNote(@Body() postBody: CreateNoteDto[]){
+    console.log(postBody)
+    postBody.map(post => this.NotesService.addNote(post))
     return this.NotesService.getNotes()
 }
 

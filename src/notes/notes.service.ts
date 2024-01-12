@@ -7,10 +7,10 @@ import { Result } from 'postcss';
 export class NotesService {
 
     private Notes: Array<CreateNoteDto> = [
-        {id: 1705006307122, content: 'Hellow Word!', owner: 'DagmawiElias'},
-        {id: 1705006307123, content: 'You there World?', owner: 'DagmawiElias'},
-        {id: 1705006307124, content: 'Bye Word!', owner: 'DagmawiElias'},
-        {id: 1705006307125, content: 'you still here?', owner: 'DagmawiElias'}
+        {id: 1705006307122, title: 'one', content: 'Hellow Word!', owner: 'DagmawiElias'},
+        {id: 1705006307123, title: 'two', content: 'You there World?', owner: 'DagmawiElias'},
+        {id: 1705006307124, title: 'three', content: 'Bye Word!', owner: 'DagmawiElias'},
+        {id: 1705006307125, title: 'four',content: 'you still here?', owner: 'DagmawiElias'}
     ]
 
     getNote(id: number){
