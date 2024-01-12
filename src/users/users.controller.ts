@@ -39,6 +39,18 @@ export class UsersController {
 
     }
 
+    @Post('login')
+    checkuser(@Body() userData: CreateUserDto){
+        let login = this.UsersService.confirm_user(userData.user_name, userData.password)
+
+        if(!login) {
+            throw new Error('User not found');
+        }
+
+        return login;
+    }
+
+
     @Delete(':user_name')
     removeuser(@Param('user_Name') user_Name:string){
         return null

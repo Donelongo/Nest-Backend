@@ -54,4 +54,14 @@ export class UsersService {
 
         return removedUser
     }
+
+    confirm_user(user_name: string, password: string){
+        let user = this.Users.find(user => user.user_name === user_name)
+
+        if(user.password === password){
+            return true
+        }else{
+            return false
+        }
+    }
 }
